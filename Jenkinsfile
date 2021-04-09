@@ -12,13 +12,13 @@ pipeline {
 
     stage('Robot tests') {
       steps {
-        sh "docker run -v ${PWD}/RobotTesting:/opt/robotframework ppodgorsek/robot-framework:latest"
+        sh "docker-compose run robot"
       }
     }
 
   }
 
-post {
+  post {
     always {
       step([$class: 'RobotPublisher',
             disableArchiveOutput: false,
